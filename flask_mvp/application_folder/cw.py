@@ -16,5 +16,3 @@ def com_search(word):
         if check_word(word, df_cw.iloc[i,1]):
             com_str.append(df_cw.iloc[i,0])
     return com_str
-    
-com_search('clean')
