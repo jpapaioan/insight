@@ -1,40 +1,42 @@
 from flask import render_template, request, redirect
-from application_folder import flask_instance
+from application_folder import flask_instance, com_methods
 import os
-import pickle
 import pandas as pd
+
 
 def check_word(sub, str_list):
     result = any(sub in mystring for mystring in str_list)
     return result
 
-def com_search(word):
-    cwd = os.getcwd()
-    file_path = cwd + '/cw.pkl'
-    df_cw = pd.read_pickle(file_path)
-    com_str = []
-    for i in range(len(df_cw.iloc[:,0])):
-        if check_word(word, df_cw.iloc[i,1]):
-            com_str.append(df_cw.iloc[i,0])
-    return com_str
+
 
 @flask_instance.route('/', methods=['POST', 'GET'])
 @flask_instance.route('/index', methods=['POST', 'GET'])
 def form_example():
     if request.method == 'POST':  #this block is only entered when the form is submitted
-        
-        foo = request.form.get('edge_1')
-        foo2 = request.form.get('edge_2')
-        foo3 = request.form.get('edge_3')
-        if foo:
-            print(foo)
-        
-        keyword = ''
-        comics = com_search(keyword)
+        df = com_methods.retrieve_df()
+        comics = []
+        rate_clean = request.form.get('rate_1')
+        rate_mid = request.form.get('rate_2')
+        rate_dark = request.form.get('rate_3')
+
+        # put in try/exceptions to curb user errors later!
+        rate_list = [rate_clean, rate_mid, rate_dark]
+        comics = com_methods.rate_search(df, comics, rate_list)
+
+        if rate_clean:
+            rating = 'PG'
+        if rate_mid:
+            rating = 'PG-13'
+        if rate_dark:
+            rating = 'R'
         
         template_dict = {
-            'key' : keyword,
-            'comedians': comics, 
+            'rating_key' : rating,
+            'comic1': comics[0],
+            'comic2': comics[1],
+            'comic3': comics[2],
+            'comic_total': comics[3]
             }
         return render_template('test_results.html', **template_dict)
     
