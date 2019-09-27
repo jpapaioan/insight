@@ -22,10 +22,14 @@ def com_search(word):
 @flask_instance.route('/index', methods=['POST', 'GET'])
 def form_example():
     if request.method == 'POST':  #this block is only entered when the form is submitted
-        keyword = request.form.get('key')
         
-        print('Input params:', keyword)
-
+        foo = request.form.get('edge_1')
+        foo2 = request.form.get('edge_2')
+        foo3 = request.form.get('edge_3')
+        if foo:
+            print(foo)
+        
+        keyword = ''
         comics = com_search(keyword)
         
         template_dict = {
@@ -37,8 +41,10 @@ def form_example():
         # return '''<h1>The language value is: {}</h1>
         #           <h1>The framework value is: {}</h1>
         # <h1>Color selected: {} </h1>'''.format(language, framework, color)
-
+   
+    
     colors = ['red', 'blue', 'cyan']
+    
     return render_template('test.html', colors=colors)
 
 
