@@ -1,35 +1,87 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Input Test</title>
-    </head>
-    <body>
-<h1>Welcome to Stand-Up Sommelier:</h1>
-<h2>discover your comedy palate</h2>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css">
+  <link rel="stylesheet" type="text/css" href="./main.css">
+>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <scriptsrc="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+-->
+<link rel="stylesheet" href="../static/bootstrap.min.css">
+<scriptsrc="../static/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../static/main.css" type="text/css">
+
+</head>
+<body>
+
+<html>
+<head>
+<title>Stand-Up Sommelier</title>
+<body style="background:url('../static/mic_bg.jpg');
+background-attachment:fixed; background-repeat: no-repeat; background-size:cover;">
+</head>
+<body>
+
+
+<div class="container"> <h1 class="display-1"> <p class="text-warning
+  text-center text-white font-weight-bolder"> Welcome to Stand-Up
+  Sommelier </p> </h1> <h2> <p class="text-warning text-center
+  text-white font-italic"> discover your comedy palate </p> </p> </h2>
+
+</div>
 
 
 
-      <h2>Content Rating:</h2>
-      <form method="POST">
-      <input type="checkbox" name= "rate_1" value="1"> PG <br>
-      <input type="checkbox" name= "rate_2" value="1"> PG-13 <br>
-      <input type="checkbox" name= "rate_3" value="1" checked> R<br><br>
+<div class="container p-5 m-1">
+<div class="row">
+<div class="col-sm">
+<h2>
+  <p class="text-warning text-left text-white"> Content Rating:
+  </p>
+  </h2>
+  <form method="POST">
+  <div class="pl-5 m-2">
+<label class="radio"><input type="radio" name="rating" checked>
+  <h3><p class="text-white"> PG </p></h3> </label> <br>
+<label class="radio"><input type="radio" name="rating" checked>
+  <h3><p class="text-white"> PG-13</p></h3> </label> <br>
+<label class="radio"><input type="radio" name="rating" checked>
+    <h3><p class="text-white"> R </p></h3> </label> <br><br>
+    </div>
+</div>
 
- <h2>Joke Style:</h2>
-      <input type="checkbox" name="joke_1" value="1"> one-liners
-      (Short, concise)<br>
-      <input type="checkbox" name="joke_2" value="2"> bits (varying length, ~1-5 minutes)<br>
-      <input type="checkbox" name="joke_3" value="3" checked>
-      story-tellers <br><br>
+<div class="col-sm">
+  <h2>
+  <p class="text-warning text-center text-white"> Joke Style:
+  </p>
+  </h2>
 
-<h2>Subject Matter:</h2>
-      <input type="checkbox" name="topic_1" value="1">
-      politics/culture <br>
-      <input type="checkbox" name="topic_2" value="2">
-      family/relationships <br>
-      <input type="checkbox" name="topic_3" value="3" checked>
-      Observational/miscellaneous <br><br>
-      <input type="submit" value="Submit">
-      </form>
-      
-    </body>
+<div class="radio pl-5">
+  <h3>
+  <p class="text-white">
+  <label><input type="radio" name="joke_style" value="0" checked>
+  short-form (one-liners, short jokes) </label>
+  </p>
+  </h3>
+</div>
+<div class="radio pl-5">
+  <h3>
+  <p class="text-white">
+  <label><input type="radio" name="joke_style" value="1" checked>
+  long-form (longer bits, stories)</label>
+  </p>
+  </h3>
+</div>
+</div>
+</div>
+<p class= "text-center">
+<input type="submit" class="btn btn-warning btn-lg" value="Submit">
+</p>
+</form>
+   
+</body>
 </html>
