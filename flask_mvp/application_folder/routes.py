@@ -15,35 +15,28 @@ def check_word(sub, str_list):
 def form_example():
     if request.method == 'POST':  #this block is only entered when the form is submitted
         df = com_methods.retrieve_df()
-        comics = []
-        rate_clean = request.form.get('rate_1')
-        rate_mid = request.form.get('rate_2')
-        rate_dark = request.form.get('rate_3')
-
+        rating = request.form['rating']
+        joke_style = request.form['joke_style']
+        print('rating: ', rating)
+        print('joke_style: ', joke_style)
         # put in try/exceptions to curb user errors later!
-        rate_list = [rate_clean, rate_mid, rate_dark]
-        comics = com_methods.rate_search(df, comics, rate_list)
 
-        if rate_clean:
-            rating = 'PG'
-        if rate_mid:
-            rating = 'PG-13'
-        if rate_dark:
-            rating = 'R'
+        comics = com_methods.comic_search(df,rating, joke_style)
+        print('comics: ', comics)
         
+        comic_url = 'Anthony+Jeselnik+stand+up'
+        filter_url = '&sp=EgIYAQ%253D%253D'
+        base_url = 'https://www.youtube.com/results?search_query='
+        test_url = base_url+comic_url+filter_url
         template_dict = {
             'rating_key' : rating,
             'comic1': comics[0],
             'comic2': comics[1],
             'comic3': comics[2],
-            'comic_total': comics[3]
+            'comic_total': comics[3],
+            'vid_link': test_url
             }
         return render_template('test_results.html', **template_dict)
-    
-        # return '''<h1>The language value is: {}</h1>
-        #           <h1>The framework value is: {}</h1>
-        # <h1>Color selected: {} </h1>'''.format(language, framework, color)
-   
     
     colors = ['red', 'blue', 'cyan']
     
