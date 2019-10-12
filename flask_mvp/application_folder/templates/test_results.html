@@ -1,12 +1,46 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Input Test</title>
-    </head>
-    <body>
-<h1>Are we having a laugh!?</h1>
-<h2> Here are your top 3 {{ rating_key }} rated comics out of {{ comic_total}} </h2>
-{{ comic1 }} <br>
-{{ comic2 }} <br>
-{{ comic3 }} <br>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../static/bootstrap.min.css">
+<scriptsrc="../static/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Open+Sans:600i|Oswald|Raleway|Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../static/main.css" type="text/css">
+
+<title>Stand-Up Sommelier</title>
+<body style="background:url('../static/stage_curtain.jpg');
+background-attachment:fixed; background-repeat: no-repeat; background-size:cover;">
+</head>
+
+
+<div class="container">
+
+  <h1 class="display-1">
+   <p class="text-warning
+     text-center font-weight-bolder"> Are we having a laugh!?
+   </p>
+  </h1>
+
+  <h2>
+  <p class="text-warning text-center text-white font-italic">
+  Here are your top {{ rating_key }} & {{ joke_form }} rated comics
+  </p>
+  </h2>
+</div>
+
+<div class = "p-5">
+</div>
+<div class="container">
+<h2 class="display-3">
+<p class= "text-center">
+<a href="{{vid_link1 }}"> {{ comic1 }}</a>
+<br>
+<a href="{{vid_link2 }}">{{ comic2 }}</a>
+<br>
+<a href="{{vid_link3 }}">{{ comic3 }}</a>
+  <br>
+  </p>
+  </h2>
+  </div>
     </body>
 </html>

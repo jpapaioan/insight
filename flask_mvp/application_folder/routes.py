@@ -15,26 +15,33 @@ def check_word(sub, str_list):
 def form_example():
     if request.method == 'POST':  #this block is only entered when the form is submitted
         df = com_methods.retrieve_df()
-        rating = request.form['rating']
-        joke_style = request.form['joke_style']
-        print('rating: ', rating)
-        print('joke_style: ', joke_style)
-        # put in try/exceptions to curb user errors later!
+        rating = int(request.form['rating'])
+        joke_style = int(request.form['joke_style'])
 
-        comics = com_methods.comic_search(df,rating, joke_style)
-        print('comics: ', comics)
+        if rating == 1:
+            rating_label = 'PG'
+        elif rating == 2:
+            rating_label = 'PG-13'
+        else:
+            rating_label = 'R'
+
+        if joke_style == 0:
+            form_label = 'short-form'
+        else:
+            form_label = 'long-form'
+
+        comics = com_methods.comic_search(df, rating, joke_style)
+        comic_url_list = com_methods.comic_url(comics)
         
-        comic_url = 'Anthony+Jeselnik+stand+up'
-        filter_url = '&sp=EgIYAQ%253D%253D'
-        base_url = 'https://www.youtube.com/results?search_query='
-        test_url = base_url+comic_url+filter_url
         template_dict = {
-            'rating_key' : rating,
+            'rating_key' : rating_label,
+            'joke_form' : form_label,
             'comic1': comics[0],
             'comic2': comics[1],
             'comic3': comics[2],
-            'comic_total': comics[3],
-            'vid_link': test_url
+            'vid_link1': comic_url_list[0],
+            'vid_link2': comic_url_list[1],
+            'vid_link3': comic_url_list[2]
             }
         return render_template('test_results.html', **template_dict)
     
