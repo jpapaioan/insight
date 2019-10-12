@@ -3,13 +3,6 @@ from application_folder import flask_instance, com_methods
 import os
 import pandas as pd
 
-
-def check_word(sub, str_list):
-    result = any(sub in mystring for mystring in str_list)
-    return result
-
-
-
 @flask_instance.route('/', methods=['POST', 'GET'])
 @flask_instance.route('/index', methods=['POST', 'GET'])
 def form_example():
@@ -43,11 +36,8 @@ def form_example():
             'vid_link2': comic_url_list[1],
             'vid_link3': comic_url_list[2]
             }
-        return render_template('test_results.html', **template_dict)
-    
-    colors = ['red', 'blue', 'cyan']
-    
-    return render_template('test.html', colors=colors)
+        return render_template('test_results.html', **template_dict)    
+    return render_template('test.html')
 
 
 
