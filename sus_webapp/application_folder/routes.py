@@ -4,7 +4,6 @@ import os
 import pandas as pd
 
 @flask_instance.route('/', methods=['POST', 'GET'])
-@flask_instance.route('/index', methods=['POST', 'GET'])
 def form_example():
     if request.method == 'POST':  #this block is only entered when the form is submitted
         df = com_methods.retrieve_df()
@@ -38,31 +37,3 @@ def form_example():
             }
         return render_template('test_results.html', **template_dict)    
     return render_template('test.html')
-
-
-
-### OLD stuff here, ignore it
-
-@flask_instance.route('/index_old')
-def index():
-    user = {'username': 'Dan'}
-    # render template assumes the file is in "templates/*given_filename.html*
-    colors = {'a', 'b', 'c'}
-    return render_template('index.html', title='My own title', user=user, colors=colors)
-
-@flask_instance.route('/index_old2', methods=['POST', 'GET'])
-def index2():
-    # if request.method == 'POST':
-    #     user = request.form['nm']
-    #     print(user)
-    #     return "hey1"
-    # else:
-    #     return 
-    #     user = request.args.get('nm')
-    #     return "hey2"
-    user = {'username': 'Dan'}
-    # render template assumes the file is in "templates/*given_filename.html*
-    colors = {'a', 'b', 'c'}
-    x=request.args.get('x')
-    print(x)
-    return render_template('index2.html', title='My own title', user=user, colors=colors)
