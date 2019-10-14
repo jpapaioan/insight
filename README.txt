@@ -9,3 +9,6 @@ all pickled dataframes and some csv files, comedy works comedian bios and full t
 
 sus_webapp:
 standup-sommelier(sus) python/flask webapp that is self contained with css/js code, html templates, and all static files required
+
+flask_mvp:
+old template experimenting with flask/python
