@@ -23,7 +23,11 @@ def form_example():
             form_label = 'long-form'
 
         comics = com_methods.comic_search(df, rating, joke_style)
-        comic_url_list = com_methods.comic_url(comics)
+        comics_url_list = com_methods.comic_url(comics)
+
+        rand_indices = com_methods.rando_comics(len(comics))
+        i_rand_1 = rand_indices[0]
+        i_rand_2 = rand_indices[1]
         
         template_dict = {
             'rating_key' : rating_label,
@@ -31,9 +35,13 @@ def form_example():
             'comic1': comics[0],
             'comic2': comics[1],
             'comic3': comics[2],
-            'vid_link1': comic_url_list[0],
-            'vid_link2': comic_url_list[1],
-            'vid_link3': comic_url_list[2]
+            'comic4': comics[i_rand_1],
+            'comic5': comics[i_rand_2],
+            'vid_link1': comics_url_list[0],
+            'vid_link2': comics_url_list[1],
+            'vid_link3': comics_url_list[2],
+            'vid_link4': comics_url_list[i_rand_1],
+            'vid_link5': comics_url_list[i_rand_2]
             }
         return render_template('test_results.html', **template_dict)    
     return render_template('test.html')
